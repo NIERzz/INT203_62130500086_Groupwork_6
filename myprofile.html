@@ -17,28 +17,73 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
   
   </head>
-  <link rel="stylesheet" href="main.css">
+  
   <body>
-    <div class="container mt-5 flex justify-center" id="app">
-      <div class="card p-3">
-          <div class="flex items-center">
-              <div class="image"> <img :src="image" class="rounded" width="155"> </div>
-              <div class="ml-3 w-56">
-                  <h4 class="mb-0 mt-0 font-medium"> {{ firstname }} {{ lastname }}</h4> <span> {{ career }} </span>
-                  <div class="p-2 mt-2 bg-primary flex justify-between rounded text-white stats">
-                      <div class="flex flex-col"> <span class="articles">Articles</span> <span class="number1">{{ article }}</span> </div>
-                      <div class="flex flex-col"> <span class="followers">Followers</span> <span class="number2">{{ follower }}</span> </div>
-                      <div class="flex flex-col"> <span class="rating">Rating</span> <span class="number3">{{ rating }}</span> </div>
-                  </div>
-                  <div class="button mt-2 flex flex-row items-center justify-between"> <button
-                    class="border border-blue-500 rounded text-sm text-blue-600 w-100 pl-8 pr-8 pt-1 pb-1 hover:bg-blue-500 text-white">Chat</button>
-                <button
-                    class="text-white border border-blue-500 rounded text-sm  w-100 pl-8 pr-8 pt-1 pb-1 hover:bg-blue-500 ml-2 bg-blue-600 mr-2">Follow</button>
-            </div>
-          </div>
-      </div>
+    <!--head-->
+  <div class="m-3" id="app">
+    <div class="float-left" id="left_top_part">
+    <img :src="image" class="rounded-full">
+    </div>
+    <div id="right_top_part" class="">
+    <p class="font-bold text-xl"> {{ showfullname }} </p>
+    <a href="" class="float-left text-blue-400">{{ showemail }}</a>
+    <p class="text-gray-400"> &nbsp; {{ showtitle }}</p>
   </div>
+  <h1 class="clear-both mt-5 font-bold text-lg ">Account</h1>
+  <div class="clear-both pb-2 border-b border-gray-200 max-w-full"></div>
+
+  
+   <!--body-->
+  <div class="clear-both" id="body_part">
+    <div>
+      <form @submit.prevent="checkForm" class="mt-5">
+        <div>
+            <p v-if="errors" class="text-red-500">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                   <li v-for="error in errors" >{{ error }}</li> 
+                </ul>
+            </p>
+            <div>
+                <div class="pb-2">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" v-model="username" name="username" class="ml-2 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" >
+                </div>
+                <div class="pb-2">
+                  <label for="email">Email</label>
+                  <input type="text" id="email" v-model="email" name="email" class="ml-10 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+              </div>
+                <div class="pb-2">
+                    <label for="pwd">Password</label>
+                    <input type="password" id="pwd" v-model="pwd" name="pwd" class="ml-3 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="pb-2"> 
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" v-model="fullname" name="fullname" class="ml-2.5 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="pb-2">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" v-model="title" name="title" class="ml-12 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                </div>
+                <div class="pb-2"> 
+                    <label for="languages">Language</label>
+                    <select name="languages" id="languages" class="ml-2 border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                      <option value="thailand">Thailand</option>
+                      <option value="english">English</option>
+                      <option value="korea">Korea</option>
+                      <option value="japan">Japan</option>
+                    </select>
+                </div>        
+              </div>
+            </div> 
+            <div>
+              <input type="submit" value="Submit" class="px-8 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+          </div>                           
+          </form>
   </div>
-  <script src="profile.js"></script>
+</div>
+</div>
+
+  <script src="main.js"></script>
 </body>
 </html>
