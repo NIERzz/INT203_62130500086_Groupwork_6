@@ -1,13 +1,13 @@
 const constraints = {
     username: {
-        presence: true,
+        
         
     },
     fullname: {
         presence: true,
     },
     pwd: {
-        presence: true,
+        
         length:{
             minimum : 6,
             message: "must be at least 4 digits"
@@ -18,7 +18,7 @@ const constraints = {
         email: true
     },
     title: {
-        presence: true,
+        
     },
     
 }
